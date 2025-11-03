@@ -1,37 +1,44 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../services/api.js";
 
 import "./styles.js";
 import {
-  Button,
   Container,
   ContainerInputs,
   Form,
   Input,
   InputLabel,
   Title,
-  TopBackground,
 } from "./styles";
-import UsersImage from "../../assets/users.png";
+// import UsersImage from "../../assets/users.png";
+import { Button } from "../../components/Button/styles.js";
+
+import TopBackground from "../../components/TopBackground/index.jsx";
 
 function Home() {
   const inputName = useRef(); //usando o useRef para pegar o valor do input
   const inputIdade = useRef();
   const inputEmail = useRef();
+
+const navigate = useNavigate()
+
   async function registerNewUser() {
     const data = await api.post("/usuarios", {
       email: inputEmail.current.value,
       age: parseInt(inputIdade.current.value),
       name: inputName.current.value,
     });
+  
+
     console.log(data);
+    navigate('/lista-de-usuarios')
+   
   }
 
   return (
     <Container>
-      <TopBackground>
-        <img src={UsersImage} alt="Imagens dos usuários" />
-      </TopBackground>
+      <TopBackground />
       <Form>
         <Title>Cadastrar Usuários</Title>
         <ContainerInputs>
@@ -54,7 +61,7 @@ function Home() {
           </div>
         </ContainerInputs>
         <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          style={{width: "100%", display: "flex", justifyContent: "center"}}
         >
           <InputLabel>
             E-mail
@@ -66,10 +73,13 @@ function Home() {
             ref={inputEmail}
           />
         </div>
-        <Button type="button" onClick={registerNewUser}>
+        <Button type="button" onClick={registerNewUser} theme={"primary"} >
           Cadastrar Usuário
         </Button>
       </Form>
+      <Button type="button" onClick={()=> navigate('/lista-de-usuarios')} >
+          Ver Lista de Usuários
+        </Button>
     </Container>
   );
 }

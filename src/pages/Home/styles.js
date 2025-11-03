@@ -4,7 +4,7 @@ export const Title = styled.h2`
   color: #ffff;
   text-align: center;
   font-size: 38px;
-  font-weight: 600;
+  font-family: "Momo Trust Display", sans-serif;
   font-style: normal;
 `;
 
@@ -22,20 +22,6 @@ export const UsersImage = styled.img`
   max-width: 400px;
 `;
 
-export const TopBackground = styled.div`
-  display: flex;
-  background: linear-gradient(to right, #fe7e5d, #7f3b41);
-  height: 30vh;
-  max-width: 90vw;
-  border-radius: 30px;
-  align-items: center;
-  justify-content: center;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-flow: row wrap;
@@ -44,7 +30,14 @@ export const Form = styled.form`
   max-width: 500px;
   gap: 20px;
 `;
-export const ContainerInputs = styled.div``;
+export const ContainerInputs = styled.div`
+display: flex;
+flex-flow: row wrap;
+justify-content: center;
+align-items: center;
+gap: 20px;
+margin: 10px auto;
+`;
 export const InputLabel = styled.label`
   color: #ffff;
   font-size: 12px;
@@ -64,19 +57,4 @@ export const Input = styled.input`
   padding: 12px 20px;
   outline: none;
   color: #ffff;
-`;
-
-export const Button = styled.button`
-  border: none;
-  background: linear-gradient(180deg, #fe7e5d 0%, #ff6378 100%);
-  padding: 16px 32px;
-  width: fit-content;
-  border-radius: 30px;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-  &:active {
-    opacity: 0.6;
-  }
 `;

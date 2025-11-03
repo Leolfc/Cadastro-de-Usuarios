@@ -1,0 +1,17 @@
+import {createBrowserRouter} from "react-router-dom";
+import Home from "../src/pages/Home/index.jsx";
+import ListUsers from "../src/pages/ListUsers/index.jsx"
+
+const router = createBrowserRouter([
+    {
+        path:"/Home",
+        element:<Home/>
+    },
+    {
+        path:"/lista-de-usuarios",
+        element:<ListUsers/>
+    },
+  
+])
+
+export default router

@@ -4,7 +4,7 @@ import ListUsers from "../src/pages/ListUsers/index.jsx"
 
 const router = createBrowserRouter([
     {
-        path:"/Home",
+        path:"/",
         element:<Home/>
     },
     {

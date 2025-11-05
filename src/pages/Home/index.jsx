@@ -9,12 +9,14 @@ import {
   Form,
   Input,
   InputLabel,
-  Title,
+
 } from "./styles";
 // import UsersImage from "../../assets/users.png";
 import { Button } from "../../components/Button/styles.js";
 
 import TopBackground from "../../components/TopBackground/index.jsx";
+import PrimaryTitle from "../../components/Title/index.jsx";
+
 
 function Home() {
   const inputName = useRef(); //usando o useRef para pegar o valor do input
@@ -40,7 +42,7 @@ const navigate = useNavigate()
     <Container>
       <TopBackground />
       <Form>
-        <Title>Cadastrar Usuários</Title>
+        <PrimaryTitle>Cadastrar Usuários</PrimaryTitle>
         <ContainerInputs>
           <div>
             <InputLabel>

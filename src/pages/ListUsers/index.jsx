@@ -15,7 +15,7 @@ import Trash from "../../assets/trash.svg";
 export function ListUsers() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [userDelete, setUserDelete] = useState([]);
+ 
   useEffect(() => {
     async function getUsers() {
       const { data } = await api.get("/usuarios");
@@ -25,9 +25,14 @@ export function ListUsers() {
     getUsers();
   }, []);
 
-  useEffect(() => {
-    async function usersDelete() {}
-  }, []);
+
+  async function deleteUsers(id){
+     await api.delete(`/usuarios/${id}`)
+    const updateUsers = users.filter(user=>user.id !== id)
+    setUsers(updateUsers)
+  }
+
+
 
   return (
     <Container>
@@ -38,26 +43,19 @@ export function ListUsers() {
         style={{ color: "black" }}
       />
       <Container>
-        {users.map((user) => (
-          <ContainerUsuarios key={user.id}>
-            <AvatarUser
-              src={`https://avatar.iran.liara.run/public/?username=${user.id}`}
-            />
-            <CardUsers
-              style={{
-                display: "flex",
-                flexFlow: "row wrap",
-                gap: "10px",
-                justifyContent: "space-around",
-              }}
-            >
+        <ContainerUsuarios>
+          {users.map((user) => (
+            <CardUsers key={user.id}>
+              <AvatarUser
+                src={`https://avatar.iran.liara.run/public/?username=${user.id}`}
+              />
               <h3>{user.name}</h3>
               <p>{user.email}</p>
               <p>{user.age}</p>
-              <TrashIcon src={Trash} />
+              <TrashIcon src={Trash} alt="icone de lixeira" onClick={()=>deleteUsers(user.id)} />
             </CardUsers>
-          </ContainerUsuarios>
-        ))}
+          ))}
+        </ContainerUsuarios>
       </Container>
       <Button type="button" onClick={() => navigate("/")}>
         Voltar
